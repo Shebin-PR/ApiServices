@@ -17,40 +17,56 @@ class _DetailScreenState extends State<DetailScreen> {
         backgroundColor: Colors.black,
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ListTile(
-                  tileColor: Colors.lightBlue[800],
-                  title: Text(
-                    // ignore: avoid_dynamic_calls
-                    widget.productModel.name.toString(),
-                    style: const TextStyle(color: Colors.white),
-                  ),
-                  subtitle: Text(
-                    // ignore: avoid_dynamic_calls
-                    widget.productModel.tag.toString(),
-                    style: const TextStyle(
-                      color: Colors.green,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
+          child: ListView(
+            shrinkWrap: true,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                tileColor: Colors.lightBlue[800],
+                title: Text(
+                  // ignore: avoid_dynamic_calls
+                  widget.productModel.name.toString(),
+                  style: const TextStyle(color: Colors.white),
                 ),
-                const SizedBox(
-                  height: 30,
-                ),
-                Text(
-                  widget.productModel.criteria!.first.text.toString(),
+                subtitle: Text(
+                  // ignore: avoid_dynamic_calls
+                  widget.productModel.tag.toString(),
                   style: const TextStyle(
-                    color: Colors.white,
-                    // fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    letterSpacing: 0,
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  itemCount: widget.productModel.criteria!.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final crt = widget.productModel.criteria;
+                    return ListView(
+                      shrinkWrap: true,
+                      children: [
+                        Text(
+                          crt![index].text.toString(),
+                          style: const TextStyle(
+                            color: Colors.white,
+                            // fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                            letterSpacing: 0,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        )
+                      ],
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),
