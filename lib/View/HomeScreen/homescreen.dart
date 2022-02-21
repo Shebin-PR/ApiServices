@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stock_scan_parser/Controller/api.dart';
 
-import 'package:stock_scan_parser/Model/product/product.dart';
+import 'package:stock_scan_parser/View/DetailPage/detailscreen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -30,7 +30,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Column(
                       children: [
                         ListTile(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (ctx) =>
+                                    DetailScreen(index: results[index]),
+                              ),
+                            );
+                          },
                           title: Text(
                             // ignore: avoid_dynamic_calls
                             results[index].name.toString(),
@@ -48,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                         const Text(
-                          "..........................................................................................",
+                          "...........................................................................................",
                           style: TextStyle(color: Colors.white),
                         )
                       ],
