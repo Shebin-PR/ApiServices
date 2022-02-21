@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stock_scan_parser/Controller/api.dart';
-
+import 'package:stock_scan_parser/Model/Products/product.dart';
 import 'package:stock_scan_parser/View/DetailPage/detailscreen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,12 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
-        body: FutureBuilder(
+        body: FutureBuilder<List<ProductModel>?>(
           future: apiServices(),
           // initialData: InitialData,
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.hasData) {
-              final results = snapshot.data as List;
+          builder: (BuildContext context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              final results = snapshot.data!;
               return ListView.builder(
                 itemCount: results.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -35,7 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (ctx) =>
-                                    DetailScreen(index: results[index]),
+                                    DetailScreen(productModel: results[index]),
                               ),
                             );
                           },
