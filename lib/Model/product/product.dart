@@ -1,12 +1,11 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import 'criterion.dart';
+import 'package:stock_scan_parser/Model/product/criterion.dart';
 
 part 'product.g.dart';
 
 @JsonSerializable()
 class Product {
-
   @JsonKey(name: "id")
   int? id;
   @JsonKey(name: "name")
