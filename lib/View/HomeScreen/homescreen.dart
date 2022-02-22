@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String x = 'red';
+  String red = 'red';
   Map<String, Color> abcd = {};
   @override
   Widget build(BuildContext context) {
@@ -27,8 +27,8 @@ class _HomeScreenState extends State<HomeScreen> {
               return ListView.builder(
                 itemCount: results.length,
                 itemBuilder: (BuildContext context, int index) {
-                  String t = results[index].color.toString();
-                  if (t != x) {
+                  final String clr = results[index].color.toString();
+                  if (clr != red) {
                     abcd = {"color": Colors.green};
                   } else {
                     abcd = {"color": Colors.red};

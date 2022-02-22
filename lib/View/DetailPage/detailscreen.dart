@@ -10,12 +10,12 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  String x = 'red';
+  String red = 'red';
   Map<String, Color> abcd = {};
   @override
   Widget build(BuildContext context) {
-    String t = widget.productModel.color.toString();
-    if (t != x) {
+    final String clr = widget.productModel.color.toString();
+    if (clr != red) {
       abcd = {"color": Colors.green};
     } else {
       abcd = {"color": Colors.red};
