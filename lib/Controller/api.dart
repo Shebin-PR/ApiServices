@@ -10,7 +10,8 @@ Future<List<ProductModel>?> apiServices() async {
   final bodyy = jsonDecode(_response.body);
   final result = bodyy as List;
 
-  final a =
-      result.map((e) => ProductModel.fromJson(e as Map<String, dynamic>)).toList();
-  return a;
+  final data = result
+      .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
+      .toList();
+  return data;
 }
