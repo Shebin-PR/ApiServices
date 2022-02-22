@@ -27,7 +27,6 @@ class _DetailScreenState extends State<DetailScreen> {
           padding: const EdgeInsets.all(8.0),
           child: ListView(
             shrinkWrap: true,
-            // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ListTile(
                 tileColor: Colors.lightBlue[800],
@@ -63,7 +62,6 @@ class _DetailScreenState extends State<DetailScreen> {
                             crt![index].text.toString(),
                             style: const TextStyle(
                               color: Colors.white,
-                              // fontWeight: FontWeight.bold,
                               fontSize: 18,
                               letterSpacing: 0,
                             ),
@@ -71,9 +69,15 @@ class _DetailScreenState extends State<DetailScreen> {
                           const SizedBox(
                             height: 20,
                           ),
-                          const Text(
-                            "and",
-                            style: TextStyle(color: Colors.white, fontSize: 14),
+                          Text(
+                            // ignore: unrelated_type_equality_checks
+                            crt.length-1 == index
+                                ? " "
+                                : "and",
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                            ),
                           ),
                           const SizedBox(
                             height: 20,
