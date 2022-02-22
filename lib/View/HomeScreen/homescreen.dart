@@ -11,6 +11,8 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String x = 'red';
+  Map<String, Color> abcd = {};
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,6 +27,12 @@ class _HomeScreenState extends State<HomeScreen> {
               return ListView.builder(
                 itemCount: results.length,
                 itemBuilder: (BuildContext context, int index) {
+                  String t = results[index].color.toString();
+                  if (t != x) {
+                    abcd = {"color": Colors.green};
+                  } else {
+                    abcd = {"color": Colors.red};
+                  }
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
@@ -47,7 +55,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           subtitle: Text(
                             // ignore: avoid_dynamic_calls
                             results[index].tag.toString(),
-                            style: const TextStyle(color: Colors.green),
+                            style: TextStyle(color: abcd["color"]),
                           ),
                           leading: Icon(
                             Icons.circle,

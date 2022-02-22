@@ -10,8 +10,16 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+  String x = 'red';
+  Map<String, Color> abcd = {};
   @override
   Widget build(BuildContext context) {
+    String t = widget.productModel.color.toString();
+    if (t != x) {
+      abcd = {"color": Colors.green};
+    } else {
+      abcd = {"color": Colors.red};
+    }
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.black,
@@ -31,8 +39,8 @@ class _DetailScreenState extends State<DetailScreen> {
                 subtitle: Text(
                   // ignore: avoid_dynamic_calls
                   widget.productModel.tag.toString(),
-                  style: const TextStyle(
-                    color: Colors.green,
+                  style: TextStyle(
+                    color: abcd["color"],
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -41,7 +49,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 height: 30,
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10.0),
                 child: SizedBox(
                   height: 200,
                   child: ListView.builder(
@@ -65,7 +73,7 @@ class _DetailScreenState extends State<DetailScreen> {
                           ),
                           const Text(
                             "and",
-                            style: TextStyle(color: Colors.white, fontSize: 10),
+                            style: TextStyle(color: Colors.white, fontSize: 14),
                           ),
                           const SizedBox(
                             height: 20,
